@@ -1,0 +1,5 @@
+development:
+  dialect: postgres
+  datasource: dbname=sqlc_test sslmode=disable
+  dir: migrations
+  table: migrations
