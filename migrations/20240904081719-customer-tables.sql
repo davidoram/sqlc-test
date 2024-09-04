@@ -7,7 +7,7 @@ CREATE TABLE customers (
     revision    INT NOT NULL DEFAULT 1,  -- tracks the latest revision number
     created_at  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     -- other fields representing the latest revision
-    name VARCHAR(255)
+    name        VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE customer_revisions (
@@ -15,7 +15,7 @@ CREATE TABLE customer_revisions (
     revision        INT NOT NULL,
     created_at      TIMESTAMP NOT NULL,
     -- other fields representing the revision
-    name VARCHAR(255),
+    name            VARCHAR(255) NOT NULL,
     PRIMARY KEY (customer_id, revision)
 );
 

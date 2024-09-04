@@ -8,7 +8,7 @@ clean:
 	rm -rf bin
 
 sqlc-generate:
-	# docker run --network demo_network -e POSTGRES_PASSWORD=postgres --rm -v $(shell pwd):/src -w /src/wallet-api sqlc/sqlc:1.26.0 generate
+	docker run --network demo_network -e POSTGRES_PASSWORD=postgres --rm -v $(shell pwd):/src -w /src sqlc/sqlc:1.26.0 generate
 
 build: sqlc-generate
 	mkdir -p bin
