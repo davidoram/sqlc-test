@@ -4,12 +4,13 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"testing"
 
 	"github.com/davidoram/sqlc-test/db"
 	"github.com/jackc/pgx/v5/pgxpool"
 )
 
-func main() {
+func TestDB(t *testing.T) {
 	ctx := context.Background()
 	log.Printf("connecting to postgres...")
 	postgresUrl := "postgres://postgres:postgres@localhost:5432/sqlc_test?sslmode=disable"
