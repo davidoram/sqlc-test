@@ -1,6 +1,6 @@
 .PHONY: all
 
-test:
+test: clean sqlc-generate
 	go test ./... -v
 
 clean:
@@ -9,11 +9,6 @@ clean:
 
 sqlc-generate:
 	docker run --network demo_network -e POSTGRES_PASSWORD=postgres --rm -v $(shell pwd):/src -w /src sqlc/sqlc:1.26.0 generate
-
-build: sqlc-generate
-	mkdir -p bin
-	go build -o bin/sqlc-test main.go 
-
 
 startup:
 	docker network create demo_network
@@ -28,4 +23,4 @@ shutdown:
 	docker network rm demo_network || true
 
 
-bootstrap: shutdown startup build
+bootstrap: shutdown startup sqlc-generate
