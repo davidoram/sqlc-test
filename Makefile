@@ -1,6 +1,7 @@
 .PHONY: all
 
-test: clean sqlc-generate
+test: clean 
+	./scripts/wait_for_postgres.sh
 	go test ./... -v
 
 clean:
